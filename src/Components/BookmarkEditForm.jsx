@@ -34,20 +34,18 @@ function BookmarkEditForm() {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
-        navigate(`/bookmarks/${id}`);
-      })
+      .then(() => navigate(`/bookmarks/${id}`))
       .catch((error) => console.error("catch", error));
   };
 
   // On page load, fill in the form with the bookmark data.
   useEffect(() => {
     fetch(`${API}/bookmarks/${id}`)
-      .then((response) => {
-        return response.json();
+      .then((res) => {
+        return res.json();
       })
-      .then((responseJSON) => {
-        setBookmark(responseJSON);
+      .then((data) => {
+        setBookmark(data);
       })
       .catch((error) => console.error(error));
   }, [id]);
