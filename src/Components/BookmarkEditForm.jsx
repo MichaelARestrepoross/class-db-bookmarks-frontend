@@ -25,7 +25,7 @@ function BookmarkEditForm() {
 
   // Update a bookmark. Redirect to show view
   const updateBookmark = () => {
-    console.log(`${API}/bookmarks/${id}`);
+
 
     fetch(`${API}/bookmarks/${id}`, {
       method: "PUT",
@@ -86,9 +86,9 @@ function BookmarkEditForm() {
           placeholder="educational, inspirational, ..."
           onChange={handleTextChange}
         />
-        <label htmlFor="isFavorite">Favorite:</label>
+        <label htmlFor="is_favorite">Favorite:</label>
         <input
-          id="isFavorite"
+          id="is_favorite"
           type="checkbox"
           onChange={handleCheckboxChange}
           checked={bookmark.is_favorite}
@@ -97,7 +97,7 @@ function BookmarkEditForm() {
         <textarea
           id="description"
           name="description"
-          value={bookmark.description}
+          value={bookmark.description || ""}
           onChange={handleTextChange}
           placeholder="Describe why you bookmarked this site"
         />
